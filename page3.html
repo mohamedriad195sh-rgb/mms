@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رسالة ليك ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="letter-page">
+
+    <div class="floating-hearts" aria-hidden="true">
+        <span>♡</span>
+        <span>✦</span>
+        <span>♥</span>
+        <span>✧</span>
+        <span>♡</span>
+        <span>♥</span>
+        <span>✦</span>
+    </div>
+
+    <main class="letter-container">
+
+        <p class="letter-label">A LITTLE PIECE OF MY HEART</p>
+
+        <h1>في كلام مستنيك ❤️</h1>
+
+        <p class="letter-intro">
+            مش كل الكلام بيتقال بصوت...
+            في كلام مكانه القلب.
+        </p>
+
+        <!-- الظرف -->
+        <button type="button" id="openEnvelope" class="envelope-button" aria-label="افتح الظرف واقرأ الرسالة">
+
+            <div class="envelope" id="envelope">
+
+                <div class="envelope-back"></div>
+
+                <div class="letter-paper">
+                    <span class="paper-heart">♡</span>
+                </div>
+
+                <div class="envelope-front"></div>
+
+                <div class="envelope-flap"></div>
+
+                <div class="envelope-seal">♥</div>
+
+            </div>
+
+        </button>
+
+        <p id="envelopeHint" class="envelope-hint">
+            اضغط على الظرف... فيه حاجة مخصوص ليك 💌
+        </p>
+
+        <!-- الرسالة -->
+        <section id="letterMessage" class="letter-message" hidden>
+
+            <div class="message-top">♡ رسالة من القلب ♡</div>
+
+            <h2>إلى الشخص الغالي على قلبي...</h2>
+
+            <p id="typedMessage" class="typed-message"></p>
+
+            <p id="endingMessage" class="ending-message" hidden>
+                <span class="ending-heart">♥</span>
+                <br>
+                بعض الأشخاص وجودهم لوحده بيخلّي الأيام أحلى...
+                <br>
+                وإنت من الناس اللي وجودهم بيفرق بجد. ❤️
+            </p>
+
+            <button type="button" id="replayMessage" class="main-button replay-button" hidden>
+                اقرأ الرسالة تاني 💌
+            </button>
+
+        </section>
+
+        <div class="letter-footer">
+            <span>صُنعت بحب، علشان يومك يبقى مختلف</span>
+            <span class="footer-star">✦</span>
+        </div>
+
+        <a href="page2.html" class="back-link">
+            ← ارجع لذكرياتنا
+        </a>
+
+    </main>
+
+    <script>
+        const openEnvelope = document.getElementById("openEnvelope");
+        const envelope = document.getElementById("envelope");
+        const envelopeHint = document.getElementById("envelopeHint");
+        const letterMessage = document.getElementById("letterMessage");
+        const typedMessage = document.getElementById("typedMessage");
+        const endingMessage = document.getElementById("endingMessage");
+        const replayMessage = document.getElementById("replayMessage");
+
+        const messageText = `كل سنة وانتي حبيبتي وأجمل حاجة حصلتلي وجودك في حياتي نعمة كبيرة، ونفسي أفضل دأيمًا سبب في ضحكتك وفرحتك. ربنا يخليكي ليا وأفضل أحبك كل يوم أكتر من اللي قبله و بحبك كتير اووي بجد ي جني و ان شاء الله السنه الجايه نكون مع بعض و نحتفل سوا .
+
+`;
+
+        let typingTimer = null;
+        let currentIndex = 0;
+
+        function startTyping() {
+            clearTimeout(typingTimer);
+
+            currentIndex = 0;
+            typedMessage.textContent = "";
+            endingMessage.hidden = true;
+            replayMessage.hidden = true;
+
+            function typeNextCharacter() {
+                if (currentIndex < messageText.length) {
+                    typedMessage.textContent += messageText[currentIndex];
+                    currentIndex++;
+
+                    // سرعة الكتابة
+                    typingTimer = setTimeout(typeNextCharacter, 35);
+                } else {
+                    endingMessage.hidden = false;
+                    replayMessage.hidden = false;
+                }
+            }
+
+            typeNextCharacter();
+        }
+
+        openEnvelope.addEventListener("click", function () {
+            if (envelope.classList.contains("opened")) {
+                return;
+            }
+
+            envelope.classList.add("opened");
+            openEnvelope.disabled = true;
+            envelopeHint.textContent = "رسالة مخصوصة ليك... ❤️";
+
+            setTimeout(function () {
+                letterMessage.hidden = false;
+                letterMessage.classList.add("visible");
+
+                letterMessage.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+                startTyping();
+            }, 900);
+        });
+
+        replayMessage.addEventListener("click", function () {
+            letterMessage.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+            startTyping();
+        });
+    </script>
+
+</body>
+
+</html>

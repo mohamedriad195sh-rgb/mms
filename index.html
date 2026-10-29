@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>مفاجأة لجنجونتي ❤️</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- شاشة كلمة السر -->
+    <div id="passwordScreen" class="password-screen">
+
+        <div class="password-box">
+
+            <h1>عندك مفاجأة ❤️🎁</h1>
+
+            <p>الباسور تاريخ اول يوم نزلنا فيه </p>
+
+            <input type="password" id="passwordInput" placeholder="اكتب كلمة السر هنا">
+
+            <button onclick="checkPassword()">
+                افتح المفاجأة ❤️
+            </button>
+
+            <p id="errorMessage"></p>
+
+        </div>
+
+    </div>
+
+    <!-- الصفحة الأولى -->
+    <div id="birthdayPage" hidden>
+
+        <h1>Happy Birthday my Queen♥️💍😍</h1>
+
+        <img src="images/birthday.jpg" alt="صورة عيد الميلاد" width="300">
+
+        <p>كل سنه و انتي طيبه يروحي</p>
+
+        <a href="page2.html">
+            <button>اضغط هنا ❤️</button>
+        </a>
+
+    </div>
+
+    <script>
+        const correctPassword = "1792025";
+
+        function checkPassword() {
+            const enteredPassword =
+                document.getElementById("passwordInput").value;
+
+            if (enteredPassword === correctPassword) {
+                document.getElementById("passwordScreen").hidden = true;
+                document.getElementById("birthdayPage").hidden = false;
+            } else {
+                document.getElementById("errorMessage").textContent =
+                    "كلمة السر غلط، جرّب تاني ❤️";
+            }
+        }
+
+        document.getElementById("passwordInput").addEventListener(
+            "keydown",
+            function (event) {
+                if (event.key === "Enter") {
+                    checkPassword();
+                }
+            }
+        );
+    </script>
+
+</body>
+
+</html>

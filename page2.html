@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ذكرياتنا ❤️</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <main class="container">
+
+        <header class="page-heading">
+            <p class="eyebrow">OUR BEAUTIFUL MEMORIES</p>
+            <h1>أحلى ذكرياتنا ❤️</h1>
+            <p>كل صورة وكل لحظة ليها حكاية جميلة.</p>
+        </header>
+
+        <section class="music-box">
+            <div class="music-icon">♫</div>
+            <h2>أغنيتنا المفضلة 🎵</h2>
+            <p>شغّل الأغنية واستمتع بذكرياتنا.</p>
+
+            <audio id="backgroundMusic" controls loop>
+                <source src="music/song.mp3" type="audio/mpeg">
+                المتصفح لا يدعم تشغيل الصوت.
+            </audio>
+        </section>
+
+        <section class="memories-section">
+            <h2>معرض ذكرياتنا 📸</h2>
+
+            <div class="slideshow">
+                <button type="button" id="prevBtn" class="slide-arrow" aria-label="الذكرى السابقة">
+                    &#10094;
+                </button>
+
+                <div class="slide-content">
+                    <img id="memoryImage" src="images/photo1.jpg" alt="الذكرى الأولى">
+
+                    <video id="memoryVideo" controls playsinline preload="metadata" hidden>
+                        <source src="videos/memory.mp4" type="video/mp4">
+                        المتصفح لا يدعم تشغيل الفيديو.
+                    </video>
+                </div>
+
+                <button type="button" id="nextBtn" class="slide-arrow" aria-label="الذكرى التالية">
+                    &#10095;
+                </button>
+            </div>
+
+            <p id="photoCounter" class="photo-counter">1 / 6</p>
+        </section>
+
+        <section class="next-surprise">
+            <div class="sparkle">✧</div>
+            <h2>لسه فيه مفاجأة تانية ❤️</h2>
+            <p>جاهز تشوف اللي مستنيك؟</p>
+
+            <a href="page3.html" class="main-button">
+                افتح مفاجأتك 💌
+            </a>
+        </section>
+
+        <a href="index.html" class="back-link">
+            ↩ رجوع للصفحة الأولى
+        </a>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
